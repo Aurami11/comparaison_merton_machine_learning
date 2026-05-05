@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+*.pyc
+rapport/*.aux
+rapport/*.log
+rapport/*.out
+rapport/*.toc
+rapport/*.synctex
+rapport/*.tex
+rapport/*.blg
+rapport/*.bbl
