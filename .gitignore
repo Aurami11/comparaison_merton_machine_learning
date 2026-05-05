@@ -9,3 +9,5 @@ rapport/*.synctex
 rapport/*.tex
 rapport/*.blg
 rapport/*.bbl
+rapport/_figures/*
+script/
