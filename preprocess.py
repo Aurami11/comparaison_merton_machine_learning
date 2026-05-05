@@ -69,13 +69,11 @@ def get_historical_prices(df_sample, output_dir="price_data"):
 
     print(f"\nTerminé : {succes} historiques valides téléchargés dans '{output_dir}/'")
 
-# --- Exécution ---
+# Exécution
 if __name__ == "__main__":
     print("Fusion et nettoyage des données...")
-    # Assure-toi que le pattern correspond bien aux noms de tes fichiers
     df_propre = merge_and_clean("tickers_resultats_*.csv", "Florida-UCLA-LoPucki Bankruptcy Research Database 1-12-2023.csv")
     
-    # Sélection des 200 premières entreprises disposant d'un ticker valide
     df_echantillon = df_propre.copy()
     print(f"Échantillon sélectionné : {len(df_echantillon)} entreprises.")
     

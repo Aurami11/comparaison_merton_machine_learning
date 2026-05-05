@@ -5,21 +5,7 @@ import time
 import random
 import csv
 import pandas as pd
-from collections import Counter  # Ajouté uniquement pour le système de vote
-
-# 1. Configuration de ton proxy rotatif
-PROXY_USER = 'LnOH1m_0'
-PROXY_PASS = 'ae5ai3yy'
-PROXY_HOST = 'rg-42606.sp2.ovh'
-PROXY_PORT = '1100'
-
-# Construction de l'URL du proxy
-PROXY_URL = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
-
-PROXIES = {
-    "http": PROXY_URL,
-    "https": PROXY_URL
-}
+from collections import Counter
 
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -62,7 +48,7 @@ def extraire_ticker_par_consensus(resultats_recherche):
 
 
 def get_ticker_via_ddg(company_name):
-    # Ta structure d'origine intacte
+
     with DDGS() as ddgs:
         results = ddgs.text(f"{company_name} Yahoo Finance ticker", max_results=20)
         
@@ -72,7 +58,7 @@ def get_ticker_via_ddg(company_name):
         if not liste_resultats:
             return "NON_TROUVE"
             
-        # On passe tes résultats au système de vote plutôt que de prendre le premier
+        # On passe les résultats au système de vote plutôt que de prendre le premier
         return extraire_ticker_par_consensus(liste_resultats)
 
 
@@ -80,8 +66,7 @@ if __name__ == "__main__":
     # Chargement de la base LoPucki
     df = pd.read_csv(r'c:\Users\chris\Downloads\risque_credit\Florida-UCLA-LoPucki Bankruptcy Research Database 1-12-2023.csv', sep=',', encoding="latin1")
     
-    # Pour tester, on ne prend que les 50 premières entreprises
-    liste_entreprises = df["NameCorp"].tolist()[580:]
+    liste_entreprises = df["NameCorp"].tolist()
 
     csv_filename = 'tickers_resultats.csv'
     
