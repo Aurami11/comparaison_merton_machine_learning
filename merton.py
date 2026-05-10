@@ -71,6 +71,8 @@ def calculate_merton_accounting(price_folder="price_data",
         p_final = df_price['Close'].iloc[-1]
         
         # Filtre les faux positifs (prix supérieur à 5$ juste avant faillite)
+        # Cela peut indiquer des données erronées ou des entreprises non réellement en difficulté
+        # Ce seuil de 5$ est arbitraire
         if p_final > 5.0:
             continue
             
